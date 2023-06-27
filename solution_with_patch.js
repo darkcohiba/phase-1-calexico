@@ -13,8 +13,7 @@ fetch("http://localhost:3000/menu")
         //function to add numbers to the cart
         addToCart();
     })
-
-
+    
 function renderMenu(data) {
     let menu = document.querySelector('#menu-items')
     data.forEach(item => {
@@ -60,14 +59,13 @@ function addToCart(){
         let updatedContent = {
             number_in_bag: currentItem.number_in_bag
         }
-
         fetch(`http://localhost:3000/menu/${currentItem.id}`,{
             method: "PATCH",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(updatedContent),
         })
+        cartForm['cart-amount'].value = 0
     });
-
 }
 
 
